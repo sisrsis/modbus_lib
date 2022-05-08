@@ -62,7 +62,7 @@ void modbus(uint8_t modbus_id, uint8_t *modbus_data, uint8_t modbus_data_len, ui
     if (modbus_id == modbus_data[0])
     {
         if(CRC16(modbus_data,modbus_data_len)==0)
-            {
+        {
                 switch (modbus_data[1])
                 {
                 case 0x03:
@@ -73,8 +73,8 @@ void modbus(uint8_t modbus_id, uint8_t *modbus_data, uint8_t modbus_data_len, ui
                 default:
                     break;
                 }
-            }
-            
         }
+            
     }
 }
+
