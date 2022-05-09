@@ -7,7 +7,7 @@ void modbus(uint8_t modbus_id, uint8_t *modbus_data, uint8_t modbus_data_len, ui
 
     void CRC(uint8_t * modbus_data_crc, uint8_t modbus_data_len_crc, uint8_t * data_low, uint8_t * data_high)
     {
-        uint16_t crc = CRC16(modbus_data_crc, modbus_data_len_crc - 1);
+        uint16_t crc = CRC16(modbus_data_crc,modbus_data_len_crc);
         uint8_t crc_low = crc >> 8;
         uint8_t crc_high = crc;
         *data_low = crc_low;
@@ -27,7 +27,7 @@ void modbus(uint8_t modbus_id, uint8_t *modbus_data, uint8_t modbus_data_len, ui
             {
                 data_transmit[y] = data[x]; 
             }
-            CRC(data_transmit, y, &data_transmit[y + 1], &data_transmit[y + 2]);
+            CRC(data_transmit, y, &data_transmit[y + 1], &data_transmit[y ]);
             *data_transmit_lan = y+2;
             break;
 
